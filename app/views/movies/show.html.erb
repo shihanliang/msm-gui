@@ -1,0 +1,30 @@
+<h1><%= @movie.title %></h1>
+
+<p><strong>Directed by:</strong> <%= @movie.director.name if @movie.director %></p>
+<p><strong>Description:</strong> <%= @movie.description %></p>
+<p><strong>Year:</strong> <%= @movie.year %></p>
+<p><strong>Duration:</strong> <%= @movie.duration %> minutes</p>
+
+<%= form_tag("/update_movie/#{@movie.id}") do %>
+  <label for="query_title">Title</label>
+  <input id="query_title" type="text" name="query_title" value="<%= @movie.title %>" />
+
+  <label for="query_description">Description</label>
+  <input id="query_description" type="text" name="query_description" value="<%= @movie.description %>" />
+
+  <label for="query_year">Year</label>
+  <input id="query_year" type="number" name="query_year" value="<%= @movie.year %>" />
+
+  <label for="query_duration">Duration</label>
+  <input id="query_duration" type="number" name="query_duration" value="<%= @movie.duration %>" />
+
+  <label for="query_image">Image</label>
+  <input id="query_image" type="text" name="query_image" value="<%= @movie.image %>" />
+
+  <label for="query_director_id">Director ID</label>
+  <input id="query_director_id" type="number" name="query_director_id" value="<%= @movie.director_id %>" />
+
+  <button>Update movie</button>
+<% end %>
+
+<a href="/delete_movie/<%= @movie.id %>">Delete this movie</a>

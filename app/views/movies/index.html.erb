@@ -1,0 +1,33 @@
+<h1>All Movies</h1>
+
+<%= form_tag("/create_movie") do %>
+  <label for="query_title">Title</label>
+  <input id="query_title" type="text" name="query_title" />
+
+  <label for="query_description">Description</label>
+  <input id="query_description" type="text" name="query_description" />
+
+  <label for="query_year">Year</label>
+  <input id="query_year" type="number" name="query_year" />
+
+  <label for="query_duration">Duration</label>
+  <input id="query_duration" type="number" name="query_duration" />
+
+  <label for="query_image">Image</label>
+  <input id="query_image" type="text" name="query_image" />
+
+  <label for="query_director_id">Director ID</label>
+  <input id="query_director_id" type="number" name="query_director_id" />
+
+  <button>Create movie</button>
+<% end %>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <li>
+      <strong><%= movie.title %></strong><br />
+      Directed by: <%= movie.director.name if movie.director %><br />
+      <a href="/movies/<%= movie.id %>">Show details</a>
+    </li>
+  <% end %>
+</ul>

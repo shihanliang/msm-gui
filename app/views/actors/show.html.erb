@@ -1,0 +1,41 @@
+<h1><%= @actor.name %></h1>
+
+<p>DOB: <%= @actor.dob %></p>
+<p>Bio: <%= @actor.bio %></p>
+<img src="<%= @actor.image %>" width="200" />
+
+<h2>Characters</h2>
+<ul>
+  <% @actor.characters.each do |character| %>
+    <li>
+      <strong><%= character.name %></strong>
+      — Directed by: <%= character.movie.director.name if character.movie && character.movie.director %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Edit Actor</h2>
+
+<form action="/update_actor/<%= @actor.id %>" method="post">
+  <div>
+    <label for="name_input">Name</label>
+    <input id="name_input" name="query_name" type="text" value="<%= @actor.name %>" />
+  </div>
+
+  <div>
+    <label for="image_input">Image</label>
+    <input id="image_input" name="query_image" type="text" value="<%= @actor.image %>" />
+  </div>
+
+  <div>
+    <label for="dob_input">Date of Birth</label>
+    <input id="dob_input" name="query_dob" type="date" value="<%= @actor.dob %>" />
+  </div>
+
+  <div>
+    <label for="bio_input">Bio</label>
+    <textarea id="bio_input" name="query_bio"><%= @actor.bio %></textarea>
+  </div>
+
+  <button>Update actor</button>
+</form>

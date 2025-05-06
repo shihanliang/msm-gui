@@ -1,0 +1,36 @@
+<h1>All Actors</h1>
+
+<form action="/insert_actor" method="post">
+  <div>
+    <label for="name_input">Name</label>
+    <input id="name_input" name="query_name" type="text" />
+  </div>
+
+  <div>
+    <label for="image_input">Image</label>
+    <input id="image_input" name="query_image" type="text" />
+  </div>
+
+  <div>
+    <label for="dob_input">Date of Birth</label>
+    <input id="dob_input" name="query_dob" type="date" />
+  </div>
+
+  <div>
+    <label for="bio_input">Bio</label>
+    <textarea id="bio_input" name="query_bio"></textarea>
+  </div>
+
+  <button>Create actor</button>
+</form>
+
+<ul>
+  <% @actors.each do |actor| %>
+    <li>
+      <strong><%= actor.name %></strong><br />
+      <a href="/actors/<%= actor.id %>">Show details</a>
+      |
+      <a href="/delete_actor/<%= actor.id %>">Delete</a>
+    </li>
+  <% end %>
+</ul>
